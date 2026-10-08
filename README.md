@@ -23,7 +23,7 @@ Circuit photographs, wiring diagrams and program flowcharts will be added to the
 | MPU6050 GND | GND |
 | MPU6050 SDA | GPIO19 |
 | MPU6050 SCL | GPIO18 |
-| LED positive (via resistor) | GPIO25 |
+| LED positive (via resistor) | GPIO26 |
 | LED negative | GND |
 
 These are the pin assignments selected for this repository's Arduino implementation.
@@ -44,7 +44,7 @@ The rotation calculation is:
 
 `Yaw = Previous Yaw + (Angular Velocity × Time Interval)`
 
-A 90° rotation corresponds to approximately 1.57 radians.
+A 90° rotation corresponds to approximately 1.5708 radians.
 
 ## Build & run
 
@@ -58,7 +58,7 @@ A 90° rotation corresponds to approximately 1.57 radians.
 5. Open `mpu6050-rotation-detection.ino`.
 6. Select the correct ESP32 board and serial port.
 7. Upload the Arduino sketch.
-8. Open the Serial Monitor to observe the yaw angle.
+8. Open the Serial Monitor at 115200 baud to observe the yaw angle.
 9. Rotate the sensor around its Z-axis to test the LED response.
 
 ## Code overview
@@ -102,10 +102,12 @@ yaw += rotationZ * deltaTime;
 
 Angular velocity from the Z-axis is integrated over time to estimate yaw.
 
+The gyroscope output is measured in radians per second, and `deltaTime` is measured in seconds. Therefore, the calculated yaw is expressed in radians.
+
 ### LED rotation detection
 
 ```cpp
-if (yaw >= 1.57) {
+if (yaw >= 1.5708) {
     digitalWrite(LED_PIN, HIGH);
 } else {
     digitalWrite(LED_PIN, LOW);
@@ -118,7 +120,9 @@ The LED activates when the accumulated positive yaw angle reaches approximately 
 
 The MPU6050 was integrated with the ESP32 to demonstrate rotation detection using gyroscope measurements.
 
-The laboratory report records successful sensor operation and LED activation when the rotation threshold was reached.
+The original laboratory report records successful sensor operation and LED activation when the rotation threshold was reached.
+
+The Arduino code in this repository has been updated to use a more accurate 90° threshold of 1.5708 radians. This revised version has not been independently hardware-tested.
 
 ### Limitations
 
@@ -141,14 +145,15 @@ The laboratory report records successful sensor operation and LED activation whe
 
 Developed as part of an Electrical and Electronic Engineering laboratory project.
 
-Hardware:
+**Hardware:**
 - ESP32 microcontroller
 - MPU6050 gyroscope/accelerometer
 
-Software:
+**Software:**
 - Arduino IDE
 - Adafruit MPU6050 library
 - Adafruit Unified Sensor library
+- Adafruit BusIO library
 
 ## License
 
