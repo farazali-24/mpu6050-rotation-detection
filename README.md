@@ -15,11 +15,11 @@ An ESP32-based rotation detection project using the MPU6050 gyroscope and accele
 
 ### Actual Breadboard Implementation
 
-![MPU6050 Breadboard Photograph](docs/photo.png)
+<img src="docs/photo.png" alt="MPU6050 Breadboard Photograph" width="450">
 
 ### Rotation Detection Flowchart
 
-![MPU6050 Rotation Detection Flowchart](docs/flowchart.png)
+<img src="docs/flowchart.png" alt="MPU6050 Rotation Detection Flowchart" width="400">
 
 ### Fritzing Project
 
