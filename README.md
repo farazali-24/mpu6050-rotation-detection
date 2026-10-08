@@ -5,7 +5,27 @@ An ESP32-based rotation detection project using the MPU6050 gyroscope and accele
 
 ## Demo / Images
 
-Circuit photographs, wiring diagrams and program flowcharts will be added to the `docs/` folder.
+### Breadboard Diagram
+
+![MPU6050 Breadboard Diagram](docs/fritzingmpu6050breadboard.png)
+
+### Circuit Schematic
+
+![MPU6050 Circuit Schematic](docs/fritzingmpu6050schematic.png)
+
+### Actual Breadboard Implementation
+
+![MPU6050 Breadboard Photograph](docs/photo.png)
+
+### Rotation Detection Flowchart
+
+![MPU6050 Rotation Detection Flowchart](docs/flowchart.png)
+
+### Fritzing Project
+
+The editable circuit design is available in [wiring.fzz](docs/wiring.fzz).
+
+For additional circuit documentation, see the [docs folder](docs/README.md).
 
 ## Hardware
 
